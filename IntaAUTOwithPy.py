@@ -1,0 +1,1 @@
+print (Olá pessoal, espero ver só automações aqui além desse código escrito )
