@@ -1,0 +1,49 @@
+# Esse autoclick aqui são para jogos de click do roblox, editando as variveis escritas somos capazes de fazer multiplos codigos complementares para varias sitauções
+
+import threading
+import time
+
+import keyboard
+import pydirectinput  # Usado para jogos DirectX como Roblox
+
+executando = threading.Event()
+
+
+def loop_autoclick():
+    print("Iniciando em 5 segundos... Entre na janela do Roblox!")
+    time.sleep(5)
+
+    if not executando.is_set():
+        return
+
+    print("Loop da letra 'e' iniciado.")
+    while executando.is_set():
+        pydirectinput.keyDown("e")  # Aperta a tecla
+        time.sleep(
+            0.05
+        )  # Mantém pressionada por 50ms (necessário para o Roblox registrar)
+        pydirectinput.keyUp("e")  # Solta a tecla
+        time.sleep(0.1)  # Intervalo entre as repetições
+
+    print("Loop parado.")
+
+
+def iniciar():
+    if not executando.is_set():
+        executando.set()
+        threading.Thread(target=loop_autoclick, daemon=True).start()
+
+
+def parar():
+    if executando.is_set():
+        executando.clear()
+
+
+keyboard.add_hotkey("space", iniciar)
+keyboard.add_hotkey("esc", parar)
+
+print("Espaço para iniciar | Esc para parar | TAB para sair")
+
+# IMPORTANTE: Você PRECISA abrir o VS Code como ADMINISTRADOR!
+keyboard.wait("tab")
+parar()
