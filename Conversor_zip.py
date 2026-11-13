@@ -3,16 +3,16 @@ import zipfile
 from collections import deque
 from datetime import datetime
 
-IDENTIFICADOR_PASTA = "BDOC"
+IDENTIFICADOR_PASTA = "ARQUIVOS"
 
 
 def escolher_destino(diretorio, nome_pasta):
     resposta = input(
-        "Deseja enviar os arquivos extraídos para PASTA_NOTAS? (S/N): "
+        "Deseja enviar os arquivos extraídos para PASTA_QUALQUER? (S/N): "
     ).strip().lower()
 
     if resposta == "s":
-        return os.path.join(diretorio, "PASTA_NOTAS", nome_pasta)
+        return os.path.join(diretorio, "PASTA_QUALQUER", nome_pasta)
     if resposta == "n":
         return os.path.join(diretorio, nome_pasta)
 
@@ -94,4 +94,3 @@ def extrair():
 
 if __name__ == "__main__":
     extrair()
-
