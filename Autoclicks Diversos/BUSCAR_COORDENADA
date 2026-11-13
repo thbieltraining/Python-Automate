@@ -1,0 +1,19 @@
+import pyautogui
+import time
+
+print("=== BUSCADOR DE COORDENADAS ===")
+print("Digite as coordenadas X e Y.")
+print("Pressione CTRL + C para encerrar.")
+
+while True:
+    try:
+        x = int(input("\nDigite X: "))
+        y = int(input("Digite Y: "))
+
+        pyautogui.moveTo(x, y, duration=0.5)
+
+        print(f"Mouse movimentado para X={x}, Y={y}")
+
+    except KeyboardInterrupt:
+        print("\nPrograma encerrado.")
+        break
